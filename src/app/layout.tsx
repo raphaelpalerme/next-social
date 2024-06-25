@@ -32,7 +32,13 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Navbar />
+        <header
+          className={cn(
+            "w-full bg-white md:px-8 lg:px-16 xl:px-32 2xl:px-64"
+          )}
+        >
+          <Navbar />
+        </header>
         {children}
       </body>
     </html>
