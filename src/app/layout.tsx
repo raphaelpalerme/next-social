@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Navbar";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -11,7 +12,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Social Media App",
+  title: "METACAGOUL",
   description:
     "Social media app built with Next.js",
 };
@@ -22,31 +23,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-    >
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
+    <ClerkProvider>
+      <html
+        lang="en"
+        suppressHydrationWarning
       >
-        <header
+        <body
           className={cn(
-            "w-full bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64"
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable
           )}
         >
           <Navbar />
-        </header>
-        <div
-          className={cn(
-            "bg-slate-100 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64"
-          )}
-        >
-          {children}
-        </div>
-      </body>
-    </html>
+          <div
+            className={cn(
+              "bg-slate-100  md:px-8 lg:px-16 xl:px-32 2xl:px-64"
+            )}
+          >
+            {children}
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
